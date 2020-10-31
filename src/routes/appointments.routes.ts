@@ -12,16 +12,23 @@ appointmentsRouter.get('/', (request, response) => {
 });
 
 appointmentsRouter.post('/', (request, response) => {
-  const { provider, date } = request.body;
-  const parsedDate = parseISO(date);
+  try {
+    const { provider, date } = request.body;
+    const parsedDate = parseISO(date);
 
-  const createAppointment = new CreateAppointmenteService(
-    appointmentsRepository,
-  );
+    const createAppointment = new CreateAppointmenteService(
+      appointmentsRepository,
+    );
 
-  const appointment = createAppointment.execute({ date: parsedDate, provider });
+    const appointment = createAppointment.execute({
+      date: parsedDate,
+      provider,
+    });
 
-  return response.json(appointment);
+    return response.json(appointment);
+  } catch (err) {
+    return response.status(400).json({ message: err.message });
+  }
 });
 
 export default appointmentsRouter;
