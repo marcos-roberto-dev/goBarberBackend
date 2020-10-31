@@ -14,7 +14,7 @@ appointmentsRouter.post('/', (request, response) => {
     isEqual(parsedDate, appointiment.date),
   );
 
-  if (!findAppointmentInSameDate)
+  if (findAppointmentInSameDate)
     return response
       .status(400)
       .json({ message: 'This appointment is already booked' });
