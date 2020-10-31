@@ -12,13 +12,13 @@ class User {
   id!: string;
 
   @Column()
-  user!: string;
+  name!: string;
 
   @Column()
   email!: string;
 
   @Column()
-  password!: Date;
+  password!: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: Date;
