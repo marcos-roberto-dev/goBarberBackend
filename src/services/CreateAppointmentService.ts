@@ -22,7 +22,7 @@ class CreateAppointmenteService {
 
     const appointment = appointmentsRepository.create({
       date: appointlmentDate,
-      provider,
+      provideriD: provider,
     });
 
     await appointmentsRepository.save(appointment);
