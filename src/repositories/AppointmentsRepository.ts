@@ -8,6 +8,10 @@ class AppointmentsReposity {
     this.appointments = [];
   }
 
+  public all(): Appointment[] {
+    return this.appointments;
+  }
+
   public findByDate(date: Date): Appointment | null {
     const findAppointmentInSameDate = this.appointments.find(appointiment =>
       isEqual(date, appointiment.date),
