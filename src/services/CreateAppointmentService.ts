@@ -14,6 +14,7 @@ class CreateAppointmenteService {
     provider_id,
   }: RequestTDO): Promise<Appointment> {
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
+
     const appointlmentDate = startOfHour(date);
 
     const findAppointmentInSameDate = await appointmentsRepository.findByDate(
